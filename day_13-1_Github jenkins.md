@@ -70,7 +70,7 @@ Conteneur est l'espace d'execution
 
 **VOIR LA DOC** https://docs.docker.com/engine/reference/commandline/docker/ 
 
-### VOLUMES 
+### VOLUMES NOMMES
 
 `docker volume create --name=[nom du volume]` (par defaut sur /var/lib/docker/volumes) 
 
