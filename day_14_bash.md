@@ -265,3 +265,123 @@ unzip latest.zip
 mv wordpress $HOME
 rm latest.zip
 ```
+
+## Ajouter un script en tant que commande
+
+```sh
+nano commande
+
+#! /bin/bash
+echo toto
+
+chmod +x commande
+
+echo $PATH # peut pas lire notre commande
+ls -l /usr/local/bin # besoin d'être root
+
+sudo mv commande /usr/local/bin
+commande # toto
+sudo mv /usr/local/bin/commande ./
+
+commande # command 'commande' not found
+
+cat > ma_pro
+ls /toto
+ERR=$? # erreur de la dernière commande, numeric argument
+# ERR=$$ # processus courant -> NOT SURE
+if [ $ERR -ne 0 ]; then
+    exit $ERR" ceci est une erreur"
+else
+    echo ok
+fi
+
+chmod +x ma_proc
+./ma_proc # affiche l'erreur
+```
+
+```sh
+$0 # nom de la procedure en cours
+$1 # argument 1 paramètre positionel
+$* # tous les paramètres
+$# # nombre de paramètres
+
+# affiche les param
+for i
+    do echo $i
+    done
+
+mkdir toto
+
+var=$(ls)
+for i in $var
+    do
+        if [ $i = toto ]; then
+            rm -r toto
+        fi
+    done
+``` 
+
+```sh
+echo `ls` # print what cmd returns -> executes
+```
+
+```sh
+A="Bob"
+echo "hello there $A" # lis la variable entre double quote
+```
+
+## TP bash
+
+Créer un script bash qui:
+- vérifie qu'un répertoire documents existe
+- si le répertoire existe : on affiche "le répertoire documents" existe
+- sinon, on créé le répertoire
+
+```sh
+ls | sort # ordre abc
+
+ls | grep g # g présent dans file ou folder name
+
+ls | while read FICH; do
+    echo $FICH
+done
+
+ls | while read FICH; do
+    if [ -f $FICH ]; then
+        rm $FICH
+    fi
+done
+
+echo bonjour > texte.txt
+
+# supprime tous les fichiers et dossiers
+ls | while read FICH; do
+    if [ -f $FICH ]; then
+        if [ -x $FICH ]; then
+            echo $FICH" executable non supprimable"
+        fi
+        rm $FICH
+    fi
+    if [ -d $FICH ]; then
+        rm -r $FICH
+    fi
+done
+```
+
+```sh
+ls | while read FICH; do
+    if [ -f $FICH ]; then
+        if [ -x $FICH ]; then
+            echo $FICH" executable non supprimable"
+        else
+            echo "delete ? Y/n"
+            confirm=$(bash read confirm)
+            echo $confirm
+        fi
+        rm $FICH
+    fi
+    if [ -d $FICH ]; then
+        rm -r $FICH
+    fi
+done
+```
