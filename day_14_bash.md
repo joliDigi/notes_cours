@@ -22,13 +22,14 @@ seul un admin (root) peut installer, en utilisant `sudo`
 `apk` est le gestionnaire de package sur distribution Alpine
 
 Trouver une command
+
 ```sh
 whereis wget
 ```
 
 ## les dossiers linux
 
-`/bin` folder contenant les commandes 
+`/bin` folder contenant les commandes
 
 `/dev` communiquer avec les peripheriques (info materiels)
 
@@ -54,7 +55,7 @@ whereis wget
 
 `/usr/local` application accessibles à tous
 
-`/etc/fstab` fichier point de montage 
+`/etc/fstab` fichier point de montage
 
 (`fsck` permet de vérifier les disk)
 
@@ -91,6 +92,7 @@ Dans Linux tout est fichier
 `ls -l` montre les droits
 
 droit par defaut (user, group, others) :
+
 - 755 pour les dossiers
 - 644 pour les files
 
@@ -109,15 +111,13 @@ mkdir [foldername]
 
 [foldername] se retrouve avec des droits 755 par defaut
 
-
-|-|usr|usr|usr|grp|grp|grp|othr|othr|othr|
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|valeur binaire|1|1|1|1|1|0|1|0|0|
-|valeur décimale|4|2|1|4|2|0|1|0|0|
-|resultat décimale|>|7|-|-|6|-|-|4|-|
-|UMASK|0|0|0|0|0|0|0|0|0|
-|complément|1|1|1|1|1|1|1|1|1|
-
+|         -         | usr | usr | usr | grp | grp | grp | othr | othr | othr |
+| :---------------: | :-: | :-: | :-: | :-: | :-: | :-: | :--: | :--: | :--: |
+|  valeur binaire   |  1  |  1  |  1  |  1  |  1  |  0  |  1   |  0   |  0   |
+|  valeur décimale  |  4  |  2  |  1  |  4  |  2  |  0  |  1   |  0   |  0   |
+| resultat décimale |  >  |  7  |  -  |  -  |  6  |  -  |  -   |  4   |  -   |
+|       UMASK       |  0  |  0  |  0  |  0  |  0  |  0  |  0   |  0   |  0   |
+|    complément     |  1  |  1  |  1  |  1  |  1  |  1  |  1   |  1   |  1   |
 
 ## les scripts bash
 
@@ -319,7 +319,7 @@ for i in $var
             rm -r toto
         fi
     done
-``` 
+```
 
 ```sh
 echo `ls` # print what cmd returns -> executes
@@ -333,6 +333,7 @@ echo "hello there $A" # lis la variable entre double quote
 ## TP bash
 
 Créer un script bash qui:
+
 - vérifie qu'un répertoire documents existe
 - si le répertoire existe : on affiche "le répertoire documents" existe
 - sinon, on créé le répertoire
@@ -384,4 +385,12 @@ ls | while read FICH; do
         rm -r $FICH
     fi
 done
+```
+
+**/!\ REMAINDER TO CHANGE YOUR RIGHTS /!\\**
+
+```sh
+sudo umount /mnt/c
+
+sudo mount -t drvfs C: /mnt/c -o metadata,uid=1000,gid=1000,umask=22,fmask=133
 ```
