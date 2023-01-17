@@ -305,6 +305,8 @@ $1 # argument 1 paramètre positionel
 $* # tous les paramètres
 $# # nombre de paramètres
 
+$$ # PID id number
+
 # affiche les param
 for i
     do echo $i
@@ -387,10 +389,20 @@ ls | while read FICH; do
 done
 ```
 
-**/!\ REMAINDER TO CHANGE YOUR RIGHTS /!\\**
+**/!\ YOU HAVE RIGHTS, TAKE BACK CONTROL /!\\**
 
 ```sh
 sudo umount /mnt/c
 
 sudo mount -t drvfs C: /mnt/c -o metadata,uid=1000,gid=1000,umask=22,fmask=133
 ```
+
+`sudo su` root definitivement, `exit` pour quitter
+
+`/var/spool/cron` dossier pout fichier cron
+
+`crontab -e` runs tasks, installs new cron tab named root
+
+`nano root`
+
+`0 5 * * 1 wget google.com` new task added
