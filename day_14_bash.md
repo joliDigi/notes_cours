@@ -397,6 +397,8 @@ sudo umount /mnt/c
 sudo mount -t drvfs C: /mnt/c -o metadata,uid=1000,gid=1000,umask=22,fmask=133
 ```
 
+## crontab
+
 `sudo su` root definitivement, `exit` pour quitter
 
 `/var/spool/cron` dossier pout fichier cron
