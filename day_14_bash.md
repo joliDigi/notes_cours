@@ -401,10 +401,14 @@ sudo mount -t drvfs C: /mnt/c -o metadata,uid=1000,gid=1000,umask=22,fmask=133
 
 `sudo su` root definitivement, `exit` pour quitter
 
-`/var/spool/cron` dossier pout fichier cron
+`var/spool/cron/crontabs` dossier pour fichier cron
 
 `crontab -e` runs tasks, installs new cron tab named root
 
 `nano root`
 
+minute | hour | day_of_month | month | day_of_week | command_to_run
+
 `0 5 * * 1 wget google.com` new task added
+
+`crontab -l` view the contents of your crontab
